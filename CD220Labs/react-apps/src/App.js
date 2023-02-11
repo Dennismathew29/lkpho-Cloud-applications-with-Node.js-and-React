@@ -98,10 +98,10 @@ class App extends React.Component {     //This declares a class named App that e
       let listOfEntries = resp.data.entries;      //This declares a variable listOfEntries and sets it to the entries property from the API response.
       let listOfEntriesAsArray = Object.entries(listOfEntries); //This converts the listOfEntries object to an array of arrays.
       let entryDetails = listOfEntriesAsArray.map((entryDetail) => {    //This maps each entry in listOfEntriesAsArray to a new object.
-        return <li style={{ color: "green" }}>{entryDetail[1]["API"]}
-          ------- {entryDetail[1]["Link"]} </li>      ////This returns a li element with the API name and link displayed in green.
+        return <tr><td style={{ color: "red", border: "1px solid black" }}>{entryDetail[1]["API"]}</td>
+          <td style={{ color: "red", border: "1px solid black" }}> {entryDetail[1]["Link"]} </td></tr>    //his is the second td element in the same row of the HTML table, which contains the value of the "Link" property of the current element being mapped.
       })
-      this.setState({ APIlist: <ul>{entryDetails}</ul> })   //This updates the state of the App component by calling setState and passing a new state object with the APIlist set to an unordered list ul element with the entryDetails.
+      this.setState({ APIlist: <table style={{ border: "1px solid black", margin: "30px" }}><tbody>{entryDetails}</tbody></table> })   //specifies the new value for the APIlist property in the updated state. The value is an HTML table element with inline styling to set the border and margin, and a tbody element that contains the entryDetails array. The entryDetails array contains rows generated using the map() method.
     })
       .catch(err => {       //This handles errors from the API request.
         console.log(err.toString())   //This logs the error message to the console.
